@@ -19,20 +19,18 @@ public class Login extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String email = req.getParameter("email");
-		String senha = req.getParameter("senha");
 		
-		Usuario usuario = new UsuarioDAO().buscaPorEmailESenha(email, senha);
+		Usuario usuario = new UsuarioDAO()
+				.buscaPorEmailESenha(req.getParameter("email"), req.getParameter("senha"));
 		
 		PrintWriter writer = resp.getWriter();
-		
 		
 		
 		if(usuario == null){
 			writer.println("<html><body>Usuario não encontrado.</body></html>");
 		} else {
 			HttpSession session = req.getSession();
-			session.setAttribute("usuario.logado", usuario);   
+			session.setAttribute("usuarioLogado", usuario);   
 			
 			writer.println("<html><body>Usuario " +usuario.getEmail()+ " encontrado.</body></html>");
 		}

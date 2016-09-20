@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -21,8 +22,10 @@ public class Logout extends HttpServlet{
 		PrintWriter writer = resp.getWriter();
 		
 		HttpSession session = req.getSession();
-		session.removeAttribute("usuario.logado");
-		writer.println("<html><body>Usuario Deslogado!</body></html>");
+		session.removeAttribute("usuarioLogado");
+		
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/pages/logout.html");
+		requestDispatcher.forward(req, resp);
 	}
 
 }
