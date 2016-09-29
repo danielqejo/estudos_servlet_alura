@@ -11,7 +11,8 @@ Bem vindo ao nosso gerenciador de empresas!<br/>
 </c:if>
 
 <h1>Adicionar uma nova Empresa</h1>
-<form action="novaEmpresa" method="POST">
+<form action="fazTudo" method="POST">
+	<input type="hidden" name="tarefa" value="NovaEmpresa">
 	Nome: <input type="text" name="nome" />
 	<input type="submit" value="Enviar" />
 </form>
@@ -27,14 +28,16 @@ Bem vindo ao nosso gerenciador de empresas!<br/>
 <hr>
 
 <h1>Buscar Empresas</h1>
-<form action="busca" method="GET">
+<form action="fazTudo" method="GET">
+	<input type="hidden" name="tarefa" value="BuscaEmpresa">
 	<input type="text" name="filtro">
 	<input type="submit" value="Buscar">
 </form>
 
 <hr>
 
-<form action="logout" method="POST">
+<form action="fazTudo" method="POST">
+	<input type="hidden" name="tarefa" value="Logout">
 	<input type="submit" value="Deslogar">
 </form>
 </body>
